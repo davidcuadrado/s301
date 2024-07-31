@@ -50,6 +50,7 @@ public class Undo {
         commandList.add(input);
     }
 
+
     public static void undoInput(Scanner sc) {
         int i = 0;
         boolean match = false;

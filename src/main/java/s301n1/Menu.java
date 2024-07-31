@@ -18,6 +18,7 @@ public class Menu {
 
     }
 
+
     public static char getMenuOption(Scanner sc) {
         char option = 'X';
         String input = "";
@@ -51,6 +52,7 @@ public class Menu {
         return option;
     }
 
+
     public static char menuInit(char option, Scanner sc) {
         char exit = 'X';
         Undo.undoAdd(option);
@@ -78,6 +80,7 @@ public class Menu {
         return exit;
     }
 
+
     public static char menuCheck(Scanner sc) {
         System.out.println(
                 "You are about to exit the program, all unsaved entries will be lost. Press \'0\' again to confirm. ");
@@ -89,6 +92,7 @@ public class Menu {
 
         return exit;
     }
+
 
     public static void menuClose() {
         System.out.println("Terminating program execution... ");
