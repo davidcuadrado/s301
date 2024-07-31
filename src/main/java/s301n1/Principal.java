@@ -12,6 +12,5 @@ public class Principal {
             System.out.println("Data entry error. ");
         }
 
-
     }
 }
