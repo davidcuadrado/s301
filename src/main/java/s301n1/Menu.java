@@ -42,8 +42,7 @@ public class Menu {
             if (option == 'i' || option == 'd' || option == 'n' || option == 'r' || option == 'a' || option == 'w'
                     || option == 'c' || option == 's' || option == '0') {
                 return option;
-            }
-            else {
+            } else {
                 System.out.println("Input doesn't match an existing command. \n");
             }
         }
@@ -91,3 +90,4 @@ public class Menu {
         System.out.println("Terminating program execution... ");
     }
 
+}
