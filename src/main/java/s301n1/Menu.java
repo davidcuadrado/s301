@@ -8,7 +8,7 @@ public class Menu {
 
         System.out.println("Initializing... ");
         char option;
-        Undo.getInstance();
+        Undo.setInstance();
 
         do {
             option = getMenuOption(sc);
@@ -35,7 +35,7 @@ public class Menu {
 
         String input = sc.nextLine();
 
-        if (input.length() > 1 || input.length() == 0) {
+        if (input.length() != 1) {
             System.out.println("Command input error. \n");
         } else {
             option = input.charAt(0);
@@ -57,24 +57,18 @@ public class Menu {
         Undo.undoAdd(option);
 
         switch (option) {
-            case 'i': 	Undo.undoInput(sc);
-                break;
-            case 'd':	Undo.undoOffset(sc);
-                break;
-            case 'n':	Undo.undoNote();
-                break;
-            case 'r':	Undo.undoRead();
-                break;
-            case 'a':	Undo.undoAppend();
-                break;
-            case 'w':	Undo.undoWrite(sc);
-                break;
-            case 'c':	Undo.undoClear();
-                break;
-            case 's':	Undo.undoStore();
-                break;
-            case '0':	exit = menuCheck(sc);
+            case 'i' -> Undo.undoInput(sc);
+            case 'd' -> Undo.undoOffset(sc);
+            case 'n' -> Undo.undoNote();
+            case 'r' -> Undo.undoRead();
+            case 'a' -> Undo.undoAppend();
+            case 'w' -> Undo.undoWrite(sc);
+            case 'c' -> Undo.undoClear();
+            case 's' -> Undo.undoStore();
+            case '0' -> {
+                exit = menuCheck(sc);
                 return exit;
+            }
         }
         return exit;
     }
@@ -82,7 +76,7 @@ public class Menu {
 
     public static char menuCheck(Scanner sc) {
         System.out.println(
-                "You are about to exit the program, all unsaved entries will be lost. Press \'0\' again to confirm. ");
+                "You are about to exit the program, all unsaved entries will be lost. Press '0' again to confirm. ");
 
         char exit = sc.nextLine().charAt(0);
         if (exit != '0') {

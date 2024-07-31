@@ -14,19 +14,18 @@ public class Undo {
 
     private static Undo instance;
     private static ArrayList<String> commandList;
-    private static String directory = "../Undo.txt";
-    private static File undoFile = new File(Undo.directory);
+    private final static String directory = "../Undo.txt";
+    private final static File undoFile = new File(Undo.directory);
 
     private Undo() {
-        commandList = new ArrayList<String>();
+
+        ArrayList<String> commandList = new ArrayList<String>();
     }
 
-    public static Undo getInstance() {
+    public static Undo setInstance() {
         if (Undo.instance == null) {
-            new Undo();
-
+            Undo instance = new Undo();
         }
-
         return instance;
     }
 
@@ -36,7 +35,7 @@ public class Undo {
 
         String input = String.valueOf(option);
 
-        while (i < commandList.size() & match == false) {
+        while (i < commandList.size() & !match) {
             if (commandList.get(i).equals(input)) {
                 match = true;
             } else {
@@ -44,7 +43,7 @@ public class Undo {
             }
 
         }
-        if (match == true) {
+        if (match) {
             commandList.remove(i);
         }
         commandList.add(input);
@@ -58,7 +57,7 @@ public class Undo {
         System.out.print("Type input: ");
         String input = sc.nextLine();
 
-        while (i < commandList.size() & match == false) {
+        while (i < commandList.size() & !match) {
             if (commandList.get(i).equals(input)) {
                 match = true;
             } else {
@@ -66,7 +65,7 @@ public class Undo {
             }
 
         }
-        if (match == true) {
+        if (match) {
             commandList.remove(i);
         }
         commandList.add(input);
@@ -88,7 +87,7 @@ public class Undo {
             System.out.print("Please, enter the command possition: ");
             try {
                 int deleteCommandPoss = sc.nextInt();
-                System.out.println("The command \'" + commandList.get(deleteCommandPoss) + "\' has been deleted. \n");
+                System.out.println("The command '" + commandList.get(deleteCommandPoss) + " ' has been deleted. \n");
                 Undo.commandList.remove(deleteCommandPoss);
             } catch (InputMismatchException e) {
                 System.out.println("Data type input mismatch. \n");
@@ -151,7 +150,7 @@ public class Undo {
 
     public static char overwriteCheck(Scanner sc) {
         System.out.println(
-                "This action will overwrite a file. All previous listed commands will be erase. Press \'0\' to confirm. ");
+                "This action will overwrite a file. All previous listed commands will be erase. Press '0' to confirm. ");
 
         char confirm = sc.nextLine().charAt(0);
         if (confirm != '0') {
