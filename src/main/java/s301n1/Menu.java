@@ -21,7 +21,6 @@ public class Menu {
 
     public static char getMenuOption(Scanner sc) {
         char option = 'X';
-        String input = "";
 
         System.out.println("Select the desired action ");
         System.out.println("i. Command input "); // añadir elemento a commandList mediante teclado
@@ -34,7 +33,7 @@ public class Menu {
         System.out.println("s. Store memory commands in file as a single line "); // use undoStore
         System.out.println("0. Exit menu ");
 
-        input = sc.nextLine();
+        String input = sc.nextLine();
 
         if (input.length() > 1 || input.length() == 0) {
             System.out.println("Command input error. \n");
